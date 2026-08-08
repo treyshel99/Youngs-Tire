@@ -24,6 +24,50 @@ if (backToTop) {
   });
 }
 
+// Solidify header once the hero has scrolled past
+const siteHeader = document.getElementById('site-header');
+if (siteHeader) {
+  window.addEventListener('scroll', () => {
+    siteHeader.classList.toggle('scrolled', window.scrollY > 60);
+  });
+}
+
+// Count-up animation for the stat band, triggered once it enters view
+const stats = document.querySelectorAll('.stat[data-count]');
+if (stats.length && 'IntersectionObserver' in window) {
+  const animateStat = (el) => {
+    const target = parseInt(el.dataset.count, 10);
+    const suffix = el.dataset.suffix || '';
+    const numEl = el.querySelector('.stat-num');
+    const duration = 1200;
+    const start = performance.now();
+
+    const tick = (now) => {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      numEl.textContent = Math.round(target * eased) + suffix;
+      if (progress < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  };
+
+  const statObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        animateStat(entry.target);
+        statObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.4 });
+
+  stats.forEach((stat) => statObserver.observe(stat));
+} else {
+  stats.forEach((el) => {
+    const numEl = el.querySelector('.stat-num');
+    numEl.textContent = el.dataset.count + (el.dataset.suffix || '');
+  });
+}
+
 // Footer year
 const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
