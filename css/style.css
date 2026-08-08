@@ -25,7 +25,7 @@
   --font-body: 'Inter', system-ui, -apple-system, Segoe UI, sans-serif;
   --font-head: 'Anton', system-ui, sans-serif;
   --font-script: 'Pacifico', cursive;
-  --rail-width: 240px;
+  --rail-width: 268px;
 }
 
 * { box-sizing: border-box; }
@@ -102,8 +102,6 @@ p { margin: 0 0 1em; color: var(--text-light); }
 .btn .icon { width: 16px; height: 16px; fill: currentColor; stroke: none; }
 .btn-primary { background: var(--accent); color: #fff; box-shadow: var(--shadow-sm); }
 .btn-primary:hover { transform: translateY(-2px); box-shadow: var(--shadow); background: var(--accent-dark); }
-.btn-outline { background: transparent; border-color: rgba(255,255,255,0.55); color: #fff; }
-.btn-outline:hover { background: rgba(255,255,255,0.1); transform: translateY(-2px); }
 .btn-call { background: var(--blue); color: #fff; padding: 9px 16px; }
 .btn-call .icon { width: 14px; height: 14px; }
 .btn-call:hover { background: var(--blue-dark); }
@@ -119,7 +117,7 @@ p { margin: 0 0 1em; color: var(--text-light); }
   top: 0; left: 0; bottom: 0;
   width: var(--rail-width);
   z-index: 200;
-  background: var(--navy);
+  background: var(--navy) repeating-linear-gradient(115deg, rgba(255,255,255,0.03) 0 2px, transparent 2px 15px);
   border-right: 1px solid rgba(255,255,255,0.08);
   display: flex;
   flex-direction: column;
@@ -131,9 +129,9 @@ p { margin: 0 0 1em; color: var(--text-light); }
 .brand-mark { width: 30px; height: 30px; color: var(--blue); flex-shrink: 0; }
 .brand-mark svg { width: 100%; height: 100%; }
 .brand-text { display: flex; flex-direction: column; line-height: 1.1; min-width: 0; }
-.brand-name { font-family: var(--font-body); font-size: 0.95rem; color: #fff; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.brand-name .script { font-family: var(--font-script); font-weight: 400; font-size: 1.15em; text-transform: none; color: var(--blue); margin-right: 3px; letter-spacing: 0; }
-.brand-sub { font-size: 0.63rem; letter-spacing: 1.5px; color: var(--accent); text-transform: uppercase; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.brand-name { font-family: var(--font-body); font-size: 0.8rem; color: #fff; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3px; white-space: nowrap; }
+.brand-name .script { font-family: var(--font-script); font-weight: 400; font-size: 1.25em; text-transform: none; color: var(--blue); margin-right: 3px; letter-spacing: 0; }
+.brand-sub { font-size: 0.6rem; letter-spacing: 1px; color: var(--accent); text-transform: uppercase; font-weight: 700; white-space: nowrap; }
 
 .main-nav { display: flex; flex-direction: column; gap: 4px; font-weight: 600; font-size: 0.85rem; letter-spacing: 0.5px; text-transform: uppercase; flex: 1; }
 .main-nav a { display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.7); padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
@@ -207,25 +205,31 @@ p { margin: 0 0 1em; color: var(--text-light); }
   position: relative;
   z-index: 2;
   padding: 40px 22px 50px;
+  overflow: hidden;
 }
 .hero-watermark {
   position: absolute;
-  top: -6%;
-  right: -4%;
+  top: 50%;
+  right: -2%;
+  transform: translateY(-50%);
   font-family: var(--font-head);
-  font-size: clamp(6rem, 30vw, 11rem);
-  color: rgba(255,255,255,0.05);
+  font-size: clamp(6rem, 26vw, 9.5rem);
+  color: rgba(255,255,255,0.045);
   margin: 0;
   line-height: 1;
   z-index: 0;
   pointer-events: none;
+  white-space: nowrap;
 }
 .hero .eyebrow { color: var(--blue); position: relative; }
 .hero-head { margin-bottom: 0.4em; position: relative; }
 .hero-head .line { display: block; font-size: clamp(2.5rem, 12vw, 4.4rem); }
 .hero-head .accent { color: var(--accent); }
 .hero-lead { color: rgba(255,255,255,0.82); font-size: 1.05rem; max-width: 460px; position: relative; }
-.hero-ctas { display: flex; flex-wrap: wrap; gap: 14px; position: relative; }
+.hero-ctas { display: flex; flex-wrap: wrap; align-items: center; gap: 20px; position: relative; }
+.hero-call-link { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: 0.95rem; color: rgba(255,255,255,0.8); border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 2px; }
+.hero-call-link .icon { width: 15px; height: 15px; color: var(--blue); }
+.hero-call-link:hover { color: #fff; border-color: var(--blue); }
 
 .hero-photo-panel { order: 1; position: relative; height: 42vh; min-height: 260px; }
 .hero-photo {
