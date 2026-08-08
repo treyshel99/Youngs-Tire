@@ -223,7 +223,7 @@ p { margin: 0 0 1em; color: var(--text-light); }
 }
 .hero .eyebrow { color: var(--blue); position: relative; }
 .hero-head { margin-bottom: 0.4em; position: relative; }
-.hero-head .line { display: block; font-size: clamp(2.5rem, 12vw, 4.4rem); }
+.hero-head .line { display: block; font-size: clamp(2.5rem, 12vw, 4.4rem); color: #fff; }
 .hero-head .accent { color: var(--accent); }
 .hero-lead { color: rgba(255,255,255,0.82); font-size: 1.05rem; max-width: 460px; position: relative; }
 .hero-ctas { display: flex; flex-wrap: wrap; align-items: center; gap: 20px; position: relative; }
